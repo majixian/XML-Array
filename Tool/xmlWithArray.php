@@ -69,6 +69,25 @@ class xmlWithArray{
 
     }
 
+    /*对数组填充值，之后可通过该数组生成所需要的xml
+      其中，可以动态的添加xml节点*/
+    private function make_send_array_save(&$array){
 
+        foreach($array as $key => &$value){
+            if(is_array($value)){
+                if(array_key_exists('value', $value)){
+                    //可通过标签值动态添加xml节点
+                    if(is_array($value['value'])){
+                        $this->make_send_array_save($value['value']);
+                    }else{
+                        if(substr($value['value'],0,10)=='inputNeed#') {
+                            $value['value'] = $replaceValue;
+                        }
+                    }
+                }
+            }
+        }
+        return $array;
+    }
 
 }
