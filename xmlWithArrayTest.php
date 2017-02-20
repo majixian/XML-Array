@@ -8,6 +8,7 @@
 include 'Tool/xmlWithArray.php';
 
 class Test{
+    //test
 
     public  static $TestXml = '<?xml version="1.0" encoding="utf-8"?>
 						     <eaiAhsXml>
